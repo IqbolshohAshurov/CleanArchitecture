@@ -1,0 +1,21 @@
+using Domain.Entities;
+using MediatR;
+using Microsoft.Extensions.Logging;
+
+namespace Application.Features.Books.Commands.DeleteBook;
+
+public class DeletedBookEventHandler: INotificationHandler<DeletedBookEvent>
+{
+    private readonly ILogger<DeletedBookEventHandler> _logger;
+
+    public DeletedBookEventHandler(ILogger<DeletedBookEventHandler> logger)
+    {
+        _logger = logger;
+    }
+
+    public Task Handle(DeletedBookEvent notification, CancellationToken ct)
+    {
+        _logger.LogInformation($"Deleted {typeof(Book).Name} from database");
+        return Task.CompletedTask;
+    }
+}
