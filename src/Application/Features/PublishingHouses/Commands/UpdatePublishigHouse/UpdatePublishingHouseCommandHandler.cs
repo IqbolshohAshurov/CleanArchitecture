@@ -31,9 +31,11 @@ public class UpdatePublishingHouseCommandHandler: IRequestHandler<UpdatePublishi
         var valide = await _validator.ValidateAsync(command, ct);
         if (!valide.IsValid)
             return false;
-        var publishingHouse = await _context.PublishingHouses.FirstOrDefaultAsync(x => x.Id == command.Id);
+        var publishingHouse = await _context.PublishingHouses
+            .FirstOrDefaultAsync(x => x.Id == command.Id);
         _mapper.Map(command, publishingHouse);
         await _context.SaveChangeAsync(ct);
+        await _mediator.Publish(new UpdatedPublishingHouseEvent(publishingHouse), ct);
         return true;
     }
 }
