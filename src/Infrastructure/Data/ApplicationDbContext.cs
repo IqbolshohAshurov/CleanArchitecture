@@ -7,7 +7,12 @@ namespace Infrastructure.Data;
 
 public class ApplicationDbContext: DbContext, IApplicationDbContext
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options){}
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+
+    /*public ApplicationDbContext()
+    {
+        this.Configuration.LazyLoadingEnabled = false;
+    }*/
     public DbSet<Book> Books => Set<Book>();
     public DbSet<Author> Authors => Set<Author>();
     public DbSet<Language> Languages => Set<Language>();

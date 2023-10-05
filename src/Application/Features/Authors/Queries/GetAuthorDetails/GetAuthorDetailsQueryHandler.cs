@@ -1,10 +1,9 @@
 using Application.Common.Interfaces;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.Authors.Queries.GetAuthors;
+namespace Application.Features.Authors.Queries.GetAuthorDetails;
 
 public class GetAuthorDetailsQueryHandler: IRequestHandler<GetAuthorDetailsQuery, AuthorDetailsVm>
 {
