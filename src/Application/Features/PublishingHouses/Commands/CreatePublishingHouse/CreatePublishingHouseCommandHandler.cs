@@ -36,7 +36,7 @@ public class CreatePublishingHouseCommandHandler: IRequestHandler<CreatePublishi
         _context.PublishingHouses.Add(publishingHouse);
         await _context.SaveChangeAsync(ct);
 
-        await _mediator.Publish(new CreatedPublishingHouseEvent(), ct);
+        await _mediator.Publish(new CreatedPublishingHouseEvent(publishingHouse), ct);
         
         return true;
     }

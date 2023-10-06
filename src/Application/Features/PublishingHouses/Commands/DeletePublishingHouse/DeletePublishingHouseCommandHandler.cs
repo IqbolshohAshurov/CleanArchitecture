@@ -26,7 +26,7 @@ public class DeletePublishingHouseCommandHandler: IRequestHandler<DeletePublishi
         
         _context.PublishingHouses.Remove(publishingHouse);
         await _context.SaveChangeAsync(ct);
-        await _mediator.Publish(new DeletedPublishingHouseEvent(), ct);
+        await _mediator.Publish(new DeletedPublishingHouseEvent(publishingHouse), ct);
         return true;
         
     } 
