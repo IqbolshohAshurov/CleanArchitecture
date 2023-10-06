@@ -8,10 +8,12 @@ namespace Application.Features.Books.Commands.DeleteBook;
 public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, bool>
 {
     private readonly IApplicationDbContext _context;
+    private readonly IMediator _mediator;
 
-    public DeleteBookCommandHandler(IApplicationDbContext context)
+    public DeleteBookCommandHandler(IApplicationDbContext context, IMediator mediator)
     {
         _context = context;
+        _mediator = mediator;
     }
 
     public async Task<bool> Handle(DeleteBookCommand command, CancellationToken ct)
@@ -22,6 +24,8 @@ public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, bool>
         
         _context.Books.Remove(book);
         await _context.SaveChangeAsync(ct);
+        await _mediator.Publish(new DeletedBookEvent(book), ct);
+
         return true;
     }
 }

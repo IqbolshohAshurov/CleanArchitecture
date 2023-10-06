@@ -27,14 +27,15 @@ public class UpdateBookCommandHandler : IRequestHandler<UpdateBookCommand, bool>
 
     public async Task<bool> Handle(UpdateBookCommand command, CancellationToken ct)
     {
-        var book = await _context.Books.AsQueryable().FirstOrDefaultAsync(x=> x.Id == command.Id);
+        var book = await _context.Books.AsQueryable().FirstOrDefaultAsync(x=> x.Id == command.Id, ct);
         var valide = await _validator.ValidateAsync(command, ct);
         if (!valide.IsValid)
             return false;
 
         _mapper.Map(command, book);
-        await _mediator.Publish(new UpdatedBookEvent());
+        await _mediator.Publish(new UpdatedBookEvent(book), ct);
         await _context.SaveChangeAsync(ct);
+        
         return true;
     }
 }

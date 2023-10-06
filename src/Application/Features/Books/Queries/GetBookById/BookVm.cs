@@ -1,6 +1,6 @@
-namespace Application.Common.Models.DTOs.BookDTOs;
+namespace Application.Features.Books.Queries.GetBookById;
 
-public class BookDto
+public class BookVm
 {
     public string Name { get; set; }
 
@@ -15,5 +15,4 @@ public class BookDto
     public string? Photo { get; set; }
 
     public byte Edition { get; set; }
-    
 }
