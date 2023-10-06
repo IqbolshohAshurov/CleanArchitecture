@@ -1,4 +1,3 @@
-using Application.Common.Models.DTOs.BookDTOs;
 using AutoMapper;
 using Domain.Entities;
 
@@ -8,6 +7,6 @@ public class GetBookByIdMapper: Profile
 {
     public GetBookByIdMapper()
     {
-        CreateMap<Book, BookDto>();
+        CreateMap<Book, BookVm>();
     }
 }

@@ -1,12 +1,11 @@
 using Application.Common.Interfaces;
-using Application.Common.Models.DTOs.BookDTOs;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Books.Queries.GetListBook;
 
-public class GetListBookQueryHandler: IRequestHandler<GetListBookQuery, IEnumerable<BookDto>>
+public class GetListBookQueryHandler: IRequestHandler<GetListBookQuery, IEnumerable<BookVm>>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -17,9 +16,12 @@ public class GetListBookQueryHandler: IRequestHandler<GetListBookQuery, IEnumera
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<BookDto>> Handle(GetListBookQuery query, CancellationToken cancellationToken)
+    public async Task<IEnumerable<BookVm>> Handle(GetListBookQuery query, CancellationToken cancellationToken)
     {
-        var book = await _context.Books.AsNoTracking().AsQueryable().Select(x => _mapper.Map<BookDto>(x)).ToListAsync(cancellationToken);
+        var book = await _context.Books
+            .AsNoTracking()
+            .Select(x => _mapper.Map<BookVm>(x))
+            .ToListAsync(cancellationToken);
         return book;
     }
     
