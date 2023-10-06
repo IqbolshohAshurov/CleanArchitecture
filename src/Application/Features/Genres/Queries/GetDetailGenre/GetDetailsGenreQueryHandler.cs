@@ -21,11 +21,11 @@ public class GetDetailsGenreQueryHandler: IRequestHandler<GetDetailsGenreQuery, 
 
     public async Task<GenreVm> Handle(GetDetailsGenreQuery query, CancellationToken ct)
     {
-        var genreVm = await _context.Genres
+        var genre = await _context.Genres
             .AsNoTracking()
-            .Select(x => _mapper.Map<GenreVm>(x))
-            .FirstOrDefaultAsync(ct);
+            .FirstOrDefaultAsync(x => x.Id == query.Id, ct);
 
+        var genreVm = _mapper.Map<GenreVm>(genre);
         return genreVm;
     }
 }

@@ -18,8 +18,9 @@ public class GetAuthorDetailsQueryHandler: IRequestHandler<GetAuthorDetailsQuery
 
     public async Task<AuthorDetailsVm> Handle(GetAuthorDetailsQuery query, CancellationToken ct)
     {
-        var author = await _context.Authors.FirstOrDefaultAsync(x => x.Id == query.Id);
+        var author = await _context.Authors.FirstOrDefaultAsync(x => x.Id == query.Id, ct);
         var authorVm = _mapper.Map<AuthorDetailsVm>(author);
+        
         return authorVm;
     }
 }

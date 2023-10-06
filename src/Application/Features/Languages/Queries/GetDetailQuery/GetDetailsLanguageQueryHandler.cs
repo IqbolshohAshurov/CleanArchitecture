@@ -20,11 +20,11 @@ public class GetDetailsLanguageQueryHandler: IRequestHandler<GetDetailsLanguageQ
 
     public async Task<LanguageVm> Handle(GetDetailsLanguageQuery query, CancellationToken ct)
     {
-        var languageVm = await _context.Languages
+        var language = await _context.Languages
             .AsNoTracking()
-            .Select(x => _mapper.Map<LanguageVm>(x))
-            .FirstOrDefaultAsync(ct);
-
+            .FirstOrDefaultAsync(x => x.Id == query.Id, ct);
+        var languageVm = _mapper.Map<LanguageVm>(language);
+        
         return languageVm;
     }
 }

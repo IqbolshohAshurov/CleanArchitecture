@@ -18,14 +18,11 @@ public class GetDetailsPublishingHouseQueryHandler: IRequestHandler<GetDetailsPu
 
     public async Task<PublishingHouseVm> Handle(GetDetailsPublishingHouseQuery query, CancellationToken ct)
     {
-        // var publishingHouse = await _context.PublishingHouses.FirstOrDefaultAsync(x => x.Id == query.Id);
-        // var publishingHouseVm = _mapper.Map<PublishingHouseVm>(publishingHouse);
-        
-        var publishingHouseVm =
+        var publishingHouse =
             await _context.PublishingHouses.AsNoTracking()
-                .Select(x => _mapper.Map<PublishingHouseVm>(x))
-                .FirstOrDefaultAsync(ct);//.ToListAsync();
-        
+                .FirstOrDefaultAsync(x => x.Id == query.Id, ct);
+        var publishingHouseVm = _mapper.Map<PublishingHouseVm>(publishingHouse);
+            
         return publishingHouseVm;
     }
 }

@@ -18,9 +18,10 @@ public class GetListAuthorQueryHandler: IRequestHandler<GetListAuthorQuery, IEnu
 
     public async Task<IEnumerable<AuthorDetailsVm>> Handle(GetListAuthorQuery query, CancellationToken ct)
     {
-        var authorList = await _context.Authors.AsNoTracking().ToListAsync(ct);
-        var authorVm = authorList.Select(a => _mapper.Map<AuthorDetailsVm>(a));//.ToList();
-        //var authorVm = _mapper.Map<AuthorDetailsVm>(authorList);
-        return authorVm;
+        var authorVms = await _context.Authors
+            .AsNoTracking()
+            .Select(a => _mapper.Map<AuthorDetailsVm>(a))
+            .ToListAsync(ct);
+        return authorVms;
     }
 }

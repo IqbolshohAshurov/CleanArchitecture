@@ -21,11 +21,11 @@ public class GetDetailsCityQueryHandler: IRequestHandler<GetDetailsCityQuery, Ci
 
     public async Task<CityVm> Handle(GetDetailsCityQuery query, CancellationToken ct)
     {
-        var cityVm = await _context.Cities
+        var city = await _context.Cities
             .AsNoTracking()
-            .Select(x => _mapper.Map<CityVm>(x))
-            .FirstOrDefaultAsync(ct);
+            .FirstOrDefaultAsync(x => x.Id == query.Id, ct);
 
+        var cityVm = _mapper.Map<CityVm>(city);
         return cityVm;
     }
 }
