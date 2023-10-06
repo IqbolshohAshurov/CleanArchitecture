@@ -18,12 +18,18 @@ builder.Services.AddWebLayer();
 
 var app = builder.Build();
 
+//app.UseDeveloperExceptionPage();
+//app.UseExceptionHandler();
+//app.UseStatusCodePages();
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 
