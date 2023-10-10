@@ -4,8 +4,6 @@ namespace Application.Features.PublishingHouses.Queries.GetDetailsPublishingHous
 
 public class GetDetailsPublishingHouseQuery: IRequest<PublishingHouseViewModel>
 {
-    public Guid Id { get; set; }
-
     public GetDetailsPublishingHouseQuery(Guid id)
     {
         Id = id;
@@ -15,4 +13,6 @@ public class GetDetailsPublishingHouseQuery: IRequest<PublishingHouseViewModel>
     {
         
     }
+
+    public Guid Id { get; set; }
 }

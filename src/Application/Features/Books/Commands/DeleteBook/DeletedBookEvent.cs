@@ -5,15 +5,9 @@ namespace Application.Features.Books.Commands.DeleteBook;
 
 public class DeletedBookEvent: INotification
 {
+    public DeletedBookEvent() {}
+
+    public DeletedBookEvent(Book book) => Book = book;
+    
     public Book Book { get; set; }
-
-    public DeletedBookEvent()
-    {
-        
-    }
-
-    public DeletedBookEvent(Book book)
-    {
-        Book = book;
-    }
 }

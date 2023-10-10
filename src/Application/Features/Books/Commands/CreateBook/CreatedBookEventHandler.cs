@@ -2,10 +2,10 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 
 namespace Application.Features.Books.Commands.CreateBook;
-public class CreateBookEventHandler : INotificationHandler<CreatedBookEvent>
+public class CreatedBookEventHandler : INotificationHandler<CreatedBookEvent>
 {
-    private readonly ILogger<CreateBookEventHandler> _logger;
-    public CreateBookEventHandler(ILogger<CreateBookEventHandler> logger)
+    private readonly ILogger<CreatedBookEventHandler> _logger;
+    public CreatedBookEventHandler(ILogger<CreatedBookEventHandler> logger)
     {
         _logger = logger;
     }

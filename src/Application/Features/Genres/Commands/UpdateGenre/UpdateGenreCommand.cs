@@ -8,10 +8,7 @@ public class UpdateGenreCommand: IRequest<bool>
     
     public string Name { get; set; }
 
-    public UpdateGenreCommand()
-    {
-        
-    }
+    public UpdateGenreCommand() { }
 
     public UpdateGenreCommand(Guid id, string title)
     {

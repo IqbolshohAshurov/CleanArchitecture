@@ -4,12 +4,9 @@ namespace Application.Features.Books.Queries.GetBookById;
 
 public class GetBookByIdQuery: IRequest<BookViewModel>
 {
-    public Guid Id { get; init; }
-
     public GetBookByIdQuery() { }
 
-    public GetBookByIdQuery(Guid id)
-    {
-        Id = id;
-    }
+    public GetBookByIdQuery(Guid id) => Id = id;
+    
+    public Guid Id { get; init; }
 }

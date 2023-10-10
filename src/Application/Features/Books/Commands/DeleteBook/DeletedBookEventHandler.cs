@@ -15,7 +15,7 @@ public class DeletedBookEventHandler: INotificationHandler<DeletedBookEvent>
 
     public Task Handle(DeletedBookEvent notification, CancellationToken ct)
     {
-        _logger.LogInformation($"Deleted {typeof(Book).Name} from database");
+        _logger.LogInformation($"Deleted row from the table {nameof(notification)}");
         return Task.CompletedTask;
     }
 }

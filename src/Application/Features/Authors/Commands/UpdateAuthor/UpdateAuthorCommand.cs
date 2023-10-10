@@ -4,6 +4,8 @@ namespace Application.Features.Authors.Commands.UpdateAuthor;
 
 public class UpdateAuthorCommand: IRequest<bool>
 {
+    public UpdateAuthorCommand() {}
+    
     public UpdateAuthorCommand(Guid id, string firstName, string lastName)
     {
         Id = id;
@@ -14,11 +16,6 @@ public class UpdateAuthorCommand: IRequest<bool>
     public Guid Id { get; set; }
     
     public string FirstName { get; set; }
-    
-    public string LastName { get; set; }
 
-    public UpdateAuthorCommand()
-    {
-        
-    }
+    public string LastName { get; set; }
 }

@@ -6,15 +6,12 @@ namespace Application.Features.Languages.Queries.GetDetailQuery;
 
 public class GetDetailsLanguageQuery: IRequest<LanguageViewModel>
 {
-    public Guid Id { get; set; }
-
-    public GetDetailsLanguageQuery()
-    {
-        
-    }
+    public GetDetailsLanguageQuery() { }
 
     public GetDetailsLanguageQuery(Guid id)
     {
         Id = id;
     }
+
+    public Guid Id { get; set; }
 }

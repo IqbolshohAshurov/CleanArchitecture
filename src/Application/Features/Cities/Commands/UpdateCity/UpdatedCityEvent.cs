@@ -7,10 +7,7 @@ public class UpdatedCityEvent: INotification
 {
     public City City { get; set; }
 
-    public UpdatedCityEvent()
-    {
-        
-    }
+    public UpdatedCityEvent() { }
 
     public UpdatedCityEvent(City city)
     {

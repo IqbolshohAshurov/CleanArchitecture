@@ -5,15 +5,9 @@ namespace Application.Features.Books.Commands.UpdateBook;
 
 public class UpdatedBookEvent: INotification
 {
+    public UpdatedBookEvent() { }
+
+    public UpdatedBookEvent(Book book) => Book = book;
+    
     public Book Book { get; init; }
-
-    public UpdatedBookEvent()
-    {
-        
-    }
-
-    public UpdatedBookEvent(Book book)
-    {
-        Book = book;
-    }
 }

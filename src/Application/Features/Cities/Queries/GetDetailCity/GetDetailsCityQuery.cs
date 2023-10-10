@@ -6,10 +6,7 @@ public class GetDetailsCityQuery: IRequest<CityViewModel>
 {
     public Guid Id { get; set; }
 
-    public GetDetailsCityQuery()
-    {
-        
-    }
+    public GetDetailsCityQuery() { }
 
     public GetDetailsCityQuery(Guid id)
     {

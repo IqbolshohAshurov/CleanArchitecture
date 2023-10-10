@@ -8,11 +8,7 @@ public class UpdateCityCommand: IRequest<bool>
     
     public string Name { get; set; }
 
-    public UpdateCityCommand()
-    {
-        
-    }
-
+    public UpdateCityCommand() { }
     public UpdateCityCommand(Guid id, string name)
     {
         Id = id;
