@@ -3,9 +3,9 @@ using Domain.Entities;
 
 namespace Application.Features.Books.Queries.GetBookById;
 
-public class GetBookByIdMapper: Profile
+public class GetDetailsBookMapper: Profile
 {
-    public GetBookByIdMapper()
+    public GetDetailsBookMapper()
     {
         CreateMap<Book, BookViewModel>();
     }

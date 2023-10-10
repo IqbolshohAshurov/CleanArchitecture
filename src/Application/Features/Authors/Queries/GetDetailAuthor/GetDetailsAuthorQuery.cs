@@ -2,11 +2,11 @@ using MediatR;
 
 namespace Application.Features.Authors.Queries.GetAuthorDetails;
 
-public class GetAuthorDetailsQuery: IRequest<AuthorDetailsViewModel>
+public class GetDetailsAuthorQuery: IRequest<AuthorDetailsViewModel>
 {
-    public GetAuthorDetailsQuery() { }
+    public GetDetailsAuthorQuery() { }
 
-    public GetAuthorDetailsQuery(Guid id)
+    public GetDetailsAuthorQuery(Guid id)
     {
         Id = id;
     }

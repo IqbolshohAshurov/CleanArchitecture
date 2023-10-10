@@ -21,12 +21,12 @@ public class CityController: ControllerBase
     }
 
     [HttpGet("getById/{id}")]
-    public async Task<IActionResult> GetCityById(Guid id)
+    public async Task<IActionResult> GetCityById([FromRoute] GetDetailsCityQuery query)
     {
-        return Ok(await _mediator.Send(new GetDetailsCityQuery(id)));
+        return Ok(await _mediator.Send(query));
     }
 
-    [HttpGet("getAll")]
+    [HttpGet("getList")]
     public async Task<IActionResult> GetCityList()
     {
         return Ok(await _mediator.Send(new GetListCityQuery()));
@@ -44,8 +44,8 @@ public class CityController: ControllerBase
         return Ok(await _mediator.Send(command));
     }
 
-    [HttpDelete("delete")]
-    public async Task<IActionResult> DeleteCity(DeleteCityCommand command)
+    [HttpDelete("delete/{id}")]
+    public async Task<IActionResult> DeleteCity([FromRoute] DeleteCityCommand command)
     {
         return Ok(await _mediator.Send(command));
     }

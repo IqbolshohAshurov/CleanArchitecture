@@ -5,18 +5,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Books.Queries.GetBookById;
 
-public class GetBookByIdQueryHandler: IRequestHandler<GetBookByIdQuery, BookViewModel>
+public class GetDetailsBookQueryHandler: IRequestHandler<GetDetailsBookQuery, BookViewModel>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
 
-    public GetBookByIdQueryHandler(IApplicationDbContext context, IMapper mapper)
+    public GetDetailsBookQueryHandler(IApplicationDbContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;
     }
 
-    public async Task<BookViewModel> Handle(GetBookByIdQuery query, CancellationToken ct)
+    public async Task<BookViewModel> Handle(GetDetailsBookQuery query, CancellationToken ct)
     {
         var book = await _context.Books
             .AsNoTracking()

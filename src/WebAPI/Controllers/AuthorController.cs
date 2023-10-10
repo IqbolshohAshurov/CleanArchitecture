@@ -19,33 +19,33 @@ public class AuthorController: ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetAuthorById(Guid id)
+    [HttpGet("getById/{id}")]
+    public async Task<IActionResult> GetAuthorById([FromRoute] GetDetailsAuthorQuery query)
     {
-        return Ok(await _mediator.Send(new GetAuthorDetailsQuery(id)));
+        return Ok(await _mediator.Send(query));
     }
 
-    [HttpGet]
+    [HttpGet("getList")]
     public async Task<IActionResult> GetListAuthor()
     {
         return Ok(await _mediator.Send(new GetListAuthorQuery()));
     }
 
-    [HttpPost]
+    [HttpPost("create")]
     public async Task<IActionResult> CreateAuthor(CreateAuthorCommand command)
     {
         return Ok(await _mediator.Send(command));
     }
 
-    [HttpPut]
+    [HttpPut("update")]
     public async Task<IActionResult> UpdateAuthor(UpdateAuthorCommand command)
     {
         return Ok(await _mediator.Send(command));
     }
 
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAuthor(Guid id)
+    [HttpDelete("delete/{id}")]
+    public async Task<IActionResult> DeleteAuthor([FromRoute] DeleteAuthorCommand command)
     {
-        return Ok(await _mediator.Send(new DeleteAuthorCommand(id)));
+        return Ok(await _mediator.Send(command));
     }
 }

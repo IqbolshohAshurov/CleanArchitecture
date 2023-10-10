@@ -21,9 +21,9 @@ public class GenreController: ControllerBase
     }
 
     [HttpGet("getById/{id}")]
-    public async Task<IActionResult> GetGenreById(Guid id)
+    public async Task<IActionResult> GetGenreById([FromRoute] GetDetailsGenreQuery query)
     {
-        return Ok(await _mediator.Send(new GetDetailsGenreQuery(id)));
+        return Ok(await _mediator.Send(query));
     }
 
     [HttpGet("getList")]
@@ -38,10 +38,10 @@ public class GenreController: ControllerBase
         return Ok(await _mediator.Send(command));
     }
 
-    [HttpDelete("delete")]
-    public async Task<IActionResult> DeleteGenre(Guid id)
+    [HttpDelete("delete/{id}")]
+    public async Task<IActionResult> DeleteGenre([FromRoute] DeleteGenreCommand command)
     {
-        return Ok(await _mediator.Send(new DeleteGenreCommand(id)));
+        return Ok(await _mediator.Send(command));
     }
 
     [HttpPut("update")]
