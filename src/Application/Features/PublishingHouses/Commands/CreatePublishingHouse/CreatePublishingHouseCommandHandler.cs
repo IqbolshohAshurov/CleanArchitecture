@@ -12,24 +12,20 @@ public class CreatePublishingHouseCommandHandler: IRequestHandler<CreatePublishi
     private readonly IApplicationDbContext _context;
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;
-    private readonly IValidator<CreatePublishingHouseCommand> _validator;
 
     public CreatePublishingHouseCommandHandler(
         IApplicationDbContext context,
         IMediator mediator,
-        IMapper mapper,
-        IValidator<CreatePublishingHouseCommand> validator)
+        IMapper mapper)
     {
         _context = context;
         _mediator = mediator;
         _mapper = mapper;
-        _validator = validator;
     }
 
     public async Task<bool> Handle(CreatePublishingHouseCommand command, CancellationToken ct)
     {
-        var valide = await _validator.ValidateAsync(command, ct);
-        if (!valide.IsValid) 
+        if(command is null) 
             return false;
 
         var publishingHouse = _mapper.Map<PublishingHouse>(command);

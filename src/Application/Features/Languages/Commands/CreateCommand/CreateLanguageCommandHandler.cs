@@ -11,24 +11,20 @@ public class CreateLanguageCommandHandler: IRequestHandler<CreateLanguageCommand
     private readonly IApplicationDbContext _context;
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;
-    private readonly IValidator<CreateLanguageCommand> _validator;
 
     public CreateLanguageCommandHandler(
         IApplicationDbContext context,
         IMediator mediator,
-        IMapper mapper,
-        IValidator<CreateLanguageCommand> validator)
+        IMapper mapper)
     {
         _context = context;
         _mediator = mediator;
         _mapper = mapper;
-        _validator = validator;
     }
 
     public async Task<bool> Handle(CreateLanguageCommand command, CancellationToken ct)
     {
-        var valide = await _validator.ValidateAsync(command, ct);
-        if (!valide.IsValid)
+        if(command is null)
             return false;
 
         var language = _mapper.Map<Language>(command);

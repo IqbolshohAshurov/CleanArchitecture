@@ -16,21 +16,18 @@ public class CreateAuthorCommandHandler: IRequestHandler<CreateAuthorCommand, bo
     public CreateAuthorCommandHandler(
         IApplicationDbContext context,
         IMediator mediator,
-        IMapper mapper,
-        IValidator<CreateAuthorCommand> validator)
+        IMapper mapper)
     {
         _context = context;
         _mediator = mediator;
         _mapper = mapper;
-        _validator = validator;
     }
 
     public async Task<bool> Handle(CreateAuthorCommand command, CancellationToken ct)
     {
-        var valide = await _validator.ValidateAsync(command, ct);
-        if (!valide.IsValid)
+        if (command is null)
             return false;
-
+        
         var author = _mapper.Map<Author>(command); 
         _context.Authors.Add(author);
         await _context.SaveChangeAsync(ct);

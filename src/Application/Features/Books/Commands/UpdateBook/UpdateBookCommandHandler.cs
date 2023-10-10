@@ -10,26 +10,22 @@ public class UpdateBookCommandHandler : IRequestHandler<UpdateBookCommand, bool>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
-    private readonly IValidator<UpdateBookCommand> _validator;
     private readonly IMediator _mediator;
 
     public UpdateBookCommandHandler(
         IApplicationDbContext context,
         IMapper mapper,
-        IValidator<UpdateBookCommand> validator,
         IMediator mediator)
     {
         _context = context;
         _mapper = mapper;
-        _validator = validator;
         _mediator = mediator;
     }
 
     public async Task<bool> Handle(UpdateBookCommand command, CancellationToken ct)
     {
-        var book = await _context.Books.AsQueryable().FirstOrDefaultAsync(x=> x.Id == command.Id, ct);
-        var valide = await _validator.ValidateAsync(command, ct);
-        if (!valide.IsValid)
+        var book = await _context.Books.FirstOrDefaultAsync(x=> x.Id == command.Id, ct);
+        if (book is null)
             return false;
 
         _mapper.Map(command, book);
