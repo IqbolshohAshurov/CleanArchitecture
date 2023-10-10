@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Genres.Queries.GetDetailGenre;
 
-public class GetDetailsGenreQueryHandler: IRequestHandler<GetDetailsGenreQuery, GenreVm>
+public class GetDetailsGenreQueryHandler: IRequestHandler<GetDetailsGenreQuery, GenreViewModel>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -19,13 +19,13 @@ public class GetDetailsGenreQueryHandler: IRequestHandler<GetDetailsGenreQuery, 
         _mapper = mapper;
     }
 
-    public async Task<GenreVm> Handle(GetDetailsGenreQuery query, CancellationToken ct)
+    public async Task<GenreViewModel> Handle(GetDetailsGenreQuery query, CancellationToken ct)
     {
         var genre = await _context.Genres
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == query.Id, ct);
 
-        var genreVm = _mapper.Map<GenreVm>(genre);
+        var genreVm = _mapper.Map<GenreViewModel>(genre);
         return genreVm;
     }
 }

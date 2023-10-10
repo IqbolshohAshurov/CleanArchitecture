@@ -2,7 +2,7 @@ using MediatR;
 
 namespace Application.Features.Cities.Queries.GetDetailCity;
 
-public class GetDetailsCityQuery: IRequest<CityVm>
+public class GetDetailsCityQuery: IRequest<CityViewModel>
 {
     public Guid Id { get; set; }
 

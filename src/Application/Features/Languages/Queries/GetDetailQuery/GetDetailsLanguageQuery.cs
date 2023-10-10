@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Features.Languages.Queries.GetDetailQuery;
 
-public class GetDetailsLanguageQuery: IRequest<LanguageVm>
+public class GetDetailsLanguageQuery: IRequest<LanguageViewModel>
 {
     public Guid Id { get; set; }
 

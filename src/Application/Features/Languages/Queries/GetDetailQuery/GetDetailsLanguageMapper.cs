@@ -7,6 +7,6 @@ public class GetDetailsLanguageMapper: Profile
 {
     public GetDetailsLanguageMapper()
     {
-        CreateMap<Language, LanguageVm>();
+        CreateMap<Language, LanguageViewModel>();
     }
 }

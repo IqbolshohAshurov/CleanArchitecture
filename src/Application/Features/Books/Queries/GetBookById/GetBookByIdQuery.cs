@@ -2,7 +2,7 @@ using MediatR;
 
 namespace Application.Features.Books.Queries.GetBookById;
 
-public class GetBookByIdQuery: IRequest<BookVm>
+public class GetBookByIdQuery: IRequest<BookViewModel>
 {
     public Guid Id { get; init; }
 

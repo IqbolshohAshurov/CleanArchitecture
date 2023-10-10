@@ -1,6 +1,6 @@
 namespace Application.Features.PublishingHouses.Queries.GetListPublishingHouse;
 
-public class PublishingHouseVm
+public class PublishingHouseViewModel
 {
     public Guid Id { get; set; }
     
@@ -8,12 +8,12 @@ public class PublishingHouseVm
     
     public Guid CityId { get; set; }
 
-    public PublishingHouseVm()
+    public PublishingHouseViewModel()
     {
         
     }
 
-    public PublishingHouseVm(Guid id, string name, Guid cityId)
+    public PublishingHouseViewModel(Guid id, string name, Guid cityId)
     {
         Id = id;
         Name = name;

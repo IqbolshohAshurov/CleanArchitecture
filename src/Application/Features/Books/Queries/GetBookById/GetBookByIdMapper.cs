@@ -7,6 +7,6 @@ public class GetBookByIdMapper: Profile
 {
     public GetBookByIdMapper()
     {
-        CreateMap<Book, BookVm>();
+        CreateMap<Book, BookViewModel>();
     }
 }

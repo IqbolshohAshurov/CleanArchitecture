@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Books.Queries.GetBookById;
 
-public class GetBookByIdQueryHandler: IRequestHandler<GetBookByIdQuery, BookVm>
+public class GetBookByIdQueryHandler: IRequestHandler<GetBookByIdQuery, BookViewModel>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -16,13 +16,13 @@ public class GetBookByIdQueryHandler: IRequestHandler<GetBookByIdQuery, BookVm>
         _mapper = mapper;
     }
 
-    public async Task<BookVm> Handle(GetBookByIdQuery query, CancellationToken ct)
+    public async Task<BookViewModel> Handle(GetBookByIdQuery query, CancellationToken ct)
     {
         var book = await _context.Books
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == query.Id, ct);
         
-        var bookVm = _mapper.Map<BookVm>(book);
+        var bookVm = _mapper.Map<BookViewModel>(book);
 
         return bookVm;
     }

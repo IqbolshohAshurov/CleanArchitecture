@@ -1,6 +1,6 @@
 namespace Application.Features.Authors.Queries.GetListAuthor;
 
-public class AuthorDetailsVm
+public class AuthorDetailsViewModel
 {
     public Guid Id { get; set; }
     

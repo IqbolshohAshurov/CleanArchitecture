@@ -7,6 +7,6 @@ public class GetDetailsPublishingHouseMapper: Profile
 {
     public GetDetailsPublishingHouseMapper()
     {
-        CreateMap<PublishingHouse, PublishingHouseVm>();
+        CreateMap<PublishingHouse, PublishingHouseViewModel>();
     }    
 }

@@ -1,6 +1,6 @@
 namespace Application.Features.Books.Queries.GetListBook;
 
-public class BookVm
+public class BookViewModel
 {
     public string Name { get; set; }
 

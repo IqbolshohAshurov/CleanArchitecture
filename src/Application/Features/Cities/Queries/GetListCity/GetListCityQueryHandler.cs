@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Cities.Queries.GetListCity;
 
-public class GetListCityQueryHandler: IRequestHandler<GetListCityQuery, IEnumerable<CityVm>>
+public class GetListCityQueryHandler: IRequestHandler<GetListCityQuery, IEnumerable<CityViewModel>>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -18,11 +18,11 @@ public class GetListCityQueryHandler: IRequestHandler<GetListCityQuery, IEnumera
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<CityVm>> Handle(GetListCityQuery query, CancellationToken ct)
+    public async Task<IEnumerable<CityViewModel>> Handle(GetListCityQuery query, CancellationToken ct)
     {
         var cityVms = await _context.Cities
             .AsNoTracking()
-            .Select(x => _mapper.Map<CityVm>(x))
+            .Select(x => _mapper.Map<CityViewModel>(x))
             .ToListAsync(ct);
 
         return cityVms;

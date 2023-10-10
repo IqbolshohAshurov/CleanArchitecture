@@ -2,4 +2,4 @@ using MediatR;
 
 namespace Application.Features.Cities.Queries.GetListCity;
 
-public class GetListCityQuery: IRequest<IEnumerable<CityVm>> { }
+public class GetListCityQuery: IRequest<IEnumerable<CityViewModel>> { }

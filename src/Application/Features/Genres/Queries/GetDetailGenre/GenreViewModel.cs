@@ -2,18 +2,18 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Application.Features.Genres.Queries.GetDetailGenre;
 
-public class GenreVm
+public class GenreViewModel
 {
     public Guid Id { get; set; }
     
     public string Name { get; set; }
 
-    public GenreVm()
+    public GenreViewModel()
     {
         
     }
 
-    public GenreVm(Guid id, string name)
+    public GenreViewModel(Guid id, string name)
     {
         Id = id;
         Name = name;

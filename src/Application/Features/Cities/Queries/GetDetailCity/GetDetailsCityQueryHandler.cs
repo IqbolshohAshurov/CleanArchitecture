@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Cities.Queries.GetDetailCity;
 
-public class GetDetailsCityQueryHandler: IRequestHandler<GetDetailsCityQuery, CityVm>
+public class GetDetailsCityQueryHandler: IRequestHandler<GetDetailsCityQuery, CityViewModel>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -19,13 +19,13 @@ public class GetDetailsCityQueryHandler: IRequestHandler<GetDetailsCityQuery, Ci
         _mapper = mapper;
     }
 
-    public async Task<CityVm> Handle(GetDetailsCityQuery query, CancellationToken ct)
+    public async Task<CityViewModel> Handle(GetDetailsCityQuery query, CancellationToken ct)
     {
         var city = await _context.Cities
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == query.Id, ct);
 
-        var cityVm = _mapper.Map<CityVm>(city);
+        var cityVm = _mapper.Map<CityViewModel>(city);
         return cityVm;
     }
 }

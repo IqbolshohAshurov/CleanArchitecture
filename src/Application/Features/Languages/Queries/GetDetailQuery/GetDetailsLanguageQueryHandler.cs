@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Languages.Queries.GetDetailQuery;
 
-public class GetDetailsLanguageQueryHandler: IRequestHandler<GetDetailsLanguageQuery, LanguageVm>
+public class GetDetailsLanguageQueryHandler: IRequestHandler<GetDetailsLanguageQuery, LanguageViewModel>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -18,12 +18,12 @@ public class GetDetailsLanguageQueryHandler: IRequestHandler<GetDetailsLanguageQ
         _mapper = mapper;
     }
 
-    public async Task<LanguageVm> Handle(GetDetailsLanguageQuery query, CancellationToken ct)
+    public async Task<LanguageViewModel> Handle(GetDetailsLanguageQuery query, CancellationToken ct)
     {
         var language = await _context.Languages
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == query.Id, ct);
-        var languageVm = _mapper.Map<LanguageVm>(language);
+        var languageVm = _mapper.Map<LanguageViewModel>(language);
         
         return languageVm;
     }

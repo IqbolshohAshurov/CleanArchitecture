@@ -7,7 +7,7 @@ public class GetListGenreMapper: Profile
 {
     public GetListGenreMapper()
     {
-        CreateMap<Genre, GenreVm>()
+        CreateMap<Genre, GenreViewModel>()
             .ForMember(dest => dest.Name, 
                 opt => opt
                     .MapFrom(src => src.Title));

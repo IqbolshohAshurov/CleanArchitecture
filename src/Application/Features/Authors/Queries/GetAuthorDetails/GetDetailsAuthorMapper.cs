@@ -7,7 +7,7 @@ public class GetDetailsAuthorMapper: Profile
 {
     public GetDetailsAuthorMapper()
     {
-        CreateMap<Author, AuthorDetailsVm>()
+        CreateMap<Author, AuthorDetailsViewModel>()
             .ForMember(dest => dest.Name,
                 src => src.MapFrom(
                     s => s.FirstName + " " + s.LastName));
