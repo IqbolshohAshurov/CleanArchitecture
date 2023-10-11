@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Application.Features.Authors.Queries.GetAuthorDetails;
+namespace Application.Features.Authors.Queries.GetDetailAuthor;
 
 public class GetDetailsAuthorQuery: IRequest<AuthorDetailsViewModel>
 {

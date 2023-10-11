@@ -1,4 +1,4 @@
-namespace Application.Features.Authors.Queries.GetAuthorDetails;
+namespace Application.Features.Authors.Queries.GetDetailAuthor;
 
 public class AuthorDetailsViewModel
 {

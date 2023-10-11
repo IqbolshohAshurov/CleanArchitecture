@@ -1,7 +1,7 @@
 using Application.Features.Books.Commands.CreateBook;
 using Application.Features.Books.Commands.DeleteBook;
 using Application.Features.Books.Commands.UpdateBook;
-using Application.Features.Books.Queries.GetBookById;
+using Application.Features.Books.Queries.GetDetailBook;
 using Application.Features.Books.Queries.GetListBook;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

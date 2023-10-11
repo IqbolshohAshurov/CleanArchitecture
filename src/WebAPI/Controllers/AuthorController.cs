@@ -1,7 +1,7 @@
 using Application.Features.Authors.Commands.CreateAuthor;
 using Application.Features.Authors.Commands.DeleteAuthor;
 using Application.Features.Authors.Commands.UpdateAuthor;
-using Application.Features.Authors.Queries.GetAuthorDetails;
+using Application.Features.Authors.Queries.GetDetailAuthor;
 using Application.Features.Authors.Queries.GetListAuthor;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

@@ -3,7 +3,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.Authors.Queries.GetAuthorDetails;
+namespace Application.Features.Authors.Queries.GetDetailAuthor;
 
 public class GetDetailsAuthorQueryHandler: IRequestHandler<GetDetailsAuthorQuery, AuthorDetailsViewModel>
 {

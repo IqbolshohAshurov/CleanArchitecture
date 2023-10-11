@@ -3,7 +3,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.Books.Queries.GetBookById;
+namespace Application.Features.Books.Queries.GetDetailBook;
 
 public class GetDetailsBookQueryHandler: IRequestHandler<GetDetailsBookQuery, BookViewModel>
 {
