@@ -19,7 +19,7 @@ public class PublishingHouseController: ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("getById/{id}")]
+    [HttpGet("getById/{Id}")]
     public async Task<IActionResult> GetPublishingHouseById([FromRoute] GetDetailsPublishingHouseQuery query)
     {
         return Ok(await _mediator.Send(query));
@@ -43,7 +43,7 @@ public class PublishingHouseController: ControllerBase
         return Ok(await _mediator.Send(command));
     }
 
-    [HttpDelete("delete/{id}")]
+    [HttpDelete("delete/{Id}")]
     public async Task<IActionResult> DeletePublishingHouse([FromRoute] DeletePublishingHouseCommand command)
     {
         return Ok(await _mediator.Send(command));

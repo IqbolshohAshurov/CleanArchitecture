@@ -19,7 +19,7 @@ public class LanguageController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("getById/{id}")]
+    [HttpGet("getById/{Id}")]
     public async Task<IActionResult> GetLanguageById([FromRoute] GetDetailsLanguageQuery query)
     {
         return Ok(await _mediator.Send(query));
@@ -43,7 +43,7 @@ public class LanguageController : ControllerBase
         return Ok(await _mediator.Send(command));
     }
 
-    [HttpDelete("delete/{id}")]
+    [HttpDelete("delete/{Id}")]
     public async Task<IActionResult> DeleteLanguage([FromRoute] DeleteLanguageCommand command)
     {
         return Ok(await _mediator.Send(command));

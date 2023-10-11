@@ -1,5 +1,6 @@
 using Application.Common.Exceptions;
 using FluentValidation;
+using FluentValidation.Results;
 using MediatR;
 
 namespace Application.Common.Behaviours;
@@ -15,21 +16,23 @@ public class ValidatorPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<
     
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken ct)
     {
+     
         var failures = _validators
             .Select(v => v.Validate(request))
             .SelectMany(result => result.Errors)
             .ToArray();
 
-        if (failures.Length <= 0) return await next();
+
+        if (failures.Length > 0)
+            throw new InputValidationException(failures);    
+            
+            
+        return await next();
         
         // var errors = failures
         //     .GroupBy(x => x.PropertyName)
         //     .ToDictionary(k => k.Key, v => v.Select(x => x.ErrorMessage)
         //         .ToArray()
         //     );
-
-        
-        throw new InputValidationException(failures);
-        
     }
 }

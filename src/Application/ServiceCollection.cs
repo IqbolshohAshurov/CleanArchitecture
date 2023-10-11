@@ -14,7 +14,7 @@ public static class ServiceCollection
         .AddAutoMapper(Assembly.GetExecutingAssembly())
         .AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorPipelineBehavior<,>));
+        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidatorPipelineBehavior<,>));
         
         return services;
     }

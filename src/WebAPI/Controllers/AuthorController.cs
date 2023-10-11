@@ -19,7 +19,7 @@ public class AuthorController: ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("getById/{id}")]
+    [HttpGet("getById/{Id}")]
     public async Task<IActionResult> GetAuthorById([FromRoute] GetDetailsAuthorQuery query)
     {
         return Ok(await _mediator.Send(query));
@@ -43,7 +43,7 @@ public class AuthorController: ControllerBase
         return Ok(await _mediator.Send(command));
     }
 
-    [HttpDelete("delete/{id}")]
+    [HttpDelete("delete/{Id}")]
     public async Task<IActionResult> DeleteAuthor([FromRoute] DeleteAuthorCommand command)
     {
         return Ok(await _mediator.Send(command));

@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Custome Services
+// Customer Services
 builder.Services.AddApplicationLayer();
 builder.Services.AddInfrastructureLayer(builder.Configuration);
 builder.Services.AddWebLayer();
@@ -23,13 +23,13 @@ var app = builder.Build();
 //app.UseStatusCodePages();
 
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 
 app.UseHttpsRedirection();
 

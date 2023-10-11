@@ -18,7 +18,7 @@ public class BookController: ControllerBase
         _mediator = mediator;
     }
     
-    [HttpGet("getById/{id}")]
+    [HttpGet("getById/{Id}")]
     public async Task<IActionResult> GetBookByIdAsync([FromRoute] GetDetailsBookQuery query)
     {
         return Ok(await _mediator.Send(query));
@@ -48,7 +48,7 @@ public class BookController: ControllerBase
         return Ok(result);
     }
 
-    [HttpDelete("delete/{id}")]
+    [HttpDelete("delete/{Id}")]
     public async Task<IActionResult> DeleteBookAsync([FromRoute] DeleteBookCommand command)
     {
         bool result = await _mediator.Send(command);
