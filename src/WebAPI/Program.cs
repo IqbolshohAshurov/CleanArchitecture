@@ -1,6 +1,7 @@
 using Application;
 using Infrastructure;
 using WebAPI;
+using WebAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddProblemDetails();
 
 // Customer Services
 builder.Services.AddApplicationLayer();
@@ -30,6 +33,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 

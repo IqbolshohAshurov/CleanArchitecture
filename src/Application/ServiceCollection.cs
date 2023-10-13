@@ -1,5 +1,5 @@
 using System.Reflection;
-using Application.Common.Behaviours;
+using Application.Common.Behaviors;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,11 +10,11 @@ public static class ServiceCollection
 {
     public static IServiceCollection AddApplicationLayer(this IServiceCollection services)
     {
-        services.AddMediatR(Assembly.GetExecutingAssembly())
-        .AddAutoMapper(Assembly.GetExecutingAssembly())
-        .AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         
-        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidatorPipelineBehavior<,>));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorPipelineBehavior<,>));
         
         return services;
     }
