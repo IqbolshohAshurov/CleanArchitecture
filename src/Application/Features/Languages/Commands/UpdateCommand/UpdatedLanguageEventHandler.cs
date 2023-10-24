@@ -16,7 +16,7 @@ public class UpdatedLanguageEventHandler: INotificationHandler<UpdatedLanguageEv
 
     public Task Handle(UpdatedLanguageEvent notify, CancellationToken ct)
     {
-        _logger.LogInformation($"Updated row in the table {typeof(Language).Name}");
+        _logger.LogInformation($"Updated row in the table {nameof(notify)}");
         return Task.CompletedTask;
     }
 }

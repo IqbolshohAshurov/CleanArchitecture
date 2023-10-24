@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Genres.Queries.GetListGenre;
 
-public class GetListGenreQueryHandler: IRequestHandler<GetListGenreQuery, IEnumerable<GenreVm>>
+public class GetListGenreQueryHandler: IRequestHandler<GetListGenreQuery, IEnumerable<GenreViewModel>>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -18,11 +18,11 @@ public class GetListGenreQueryHandler: IRequestHandler<GetListGenreQuery, IEnume
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<GenreVm>> Handle(GetListGenreQuery query, CancellationToken ct)
+    public async Task<IEnumerable<GenreViewModel>> Handle(GetListGenreQuery query, CancellationToken ct)
     {
         var genreVms = await _context.Genres
             .AsNoTracking()
-            .Select(x => _mapper.Map<GenreVm>(x))
+            .Select(x => _mapper.Map<GenreViewModel>(x))
             .ToListAsync(ct);
 
         return genreVms;

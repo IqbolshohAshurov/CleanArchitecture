@@ -4,11 +4,7 @@ namespace Application.Features.PublishingHouses.Commands.UpdatePublishigHouse;
 
 public class UpdatePublishingHouseCommand: IRequest<bool>
 {
-    public Guid Id { get; set; }
-    
-    public string Name { get; set; }
-    
-    public Guid CityId { get; set; }
+    public UpdatePublishingHouseCommand() { }
 
     public UpdatePublishingHouseCommand(Guid id, string name, Guid cityId)
     {
@@ -17,8 +13,9 @@ public class UpdatePublishingHouseCommand: IRequest<bool>
         CityId = cityId;
     }
 
-    public UpdatePublishingHouseCommand()
-    {
-        
-    }
+    public Guid Id { get; set; }
+    
+    public string Name { get; set; }
+    
+    public Guid CityId { get; set; }
 }

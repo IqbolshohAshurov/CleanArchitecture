@@ -7,6 +7,6 @@ public class GetDetailsCityMapper: Profile
 {
     public GetDetailsCityMapper()
     {
-        CreateMap<City, CityVm>();
+        CreateMap<City, CityViewModel>();
     }
 }

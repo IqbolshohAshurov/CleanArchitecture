@@ -11,26 +11,22 @@ public class CreateCityCommandHandler: IRequestHandler<CreateCityCommand, bool>
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
-    private readonly IValidator<CreateCityCommand> _validator;
 
     public CreateCityCommandHandler(
         IApplicationDbContext context,
         IMapper mapper,
-        IMediator mediator,
-        IValidator<CreateCityCommand> validator)
+        IMediator mediator)
     {
         _context = context;
         _mapper = mapper;
         _mediator = mediator;
-        _validator = validator;
     }
 
     public async Task<bool> Handle(CreateCityCommand command, CancellationToken ct)
     {
-        var valide = await _validator.ValidateAsync(command, ct);
-        if (!valide.IsValid)
+        if (command is null)
             return false;
-
+        
         var city = _mapper.Map<City>(command);
         _context.Cities.Add(city);
         await _context.SaveChangeAsync(ct);

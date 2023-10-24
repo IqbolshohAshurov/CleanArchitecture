@@ -19,13 +19,13 @@ public class LanguageController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("getById/{id}")]
-    public async Task<IActionResult> GetLanguageById(Guid id)
+    [HttpGet("getById/{Id}")]
+    public async Task<IActionResult> GetLanguageById([FromRoute] GetDetailsLanguageQuery query)
     {
-        return Ok(await _mediator.Send(new GetDetailsLanguageQuery(id)));
+        return Ok(await _mediator.Send(query));
     }
 
-    [HttpGet("getAll")]
+    [HttpGet("getList")]
     public async Task<IActionResult> GetLanguageList()
     {
         return Ok(await _mediator.Send(new GetListLanguageQuery()));
@@ -43,8 +43,8 @@ public class LanguageController : ControllerBase
         return Ok(await _mediator.Send(command));
     }
 
-    [HttpDelete("delete")]
-    public async Task<IActionResult> DeleteLanguage(DeleteLanguageCommand command)
+    [HttpDelete("delete/{Id}")]
+    public async Task<IActionResult> DeleteLanguage([FromRoute] DeleteLanguageCommand command)
     {
         return Ok(await _mediator.Send(command));
     }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.PublishingHouses.Queries.GetListPublishingHouse;
 
-public class GetListPublishingHouseQueryHandler: IRequestHandler<GetListPublishingHouseQuery, IEnumerable<PublishingHouseVm>>
+public class GetListPublishingHouseQueryHandler: IRequestHandler<GetListPublishingHouseQuery, IEnumerable<PublishingHouseViewModel>>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -18,11 +18,11 @@ public class GetListPublishingHouseQueryHandler: IRequestHandler<GetListPublishi
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<PublishingHouseVm>> Handle(GetListPublishingHouseQuery query, CancellationToken ct)
+    public async Task<IEnumerable<PublishingHouseViewModel>> Handle(GetListPublishingHouseQuery query, CancellationToken ct)
     {
         var publishingHouseVms = await _context.PublishingHouses
             .AsNoTracking()
-            .Select(x => _mapper.Map<PublishingHouseVm>(x))
+            .Select(x => _mapper.Map<PublishingHouseViewModel>(x))
             .ToListAsync(ct);
 
         return publishingHouseVms;

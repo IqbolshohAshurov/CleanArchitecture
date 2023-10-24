@@ -12,30 +12,28 @@ public class UpdatePublishingHouseCommandHandler: IRequestHandler<UpdatePublishi
     private readonly IApplicationDbContext _context;
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;
-    private readonly IValidator<UpdatePublishingHouseCommand> _validator;
 
     public UpdatePublishingHouseCommandHandler(
         IApplicationDbContext context,
         IMediator mediator,
-        IMapper mapper,
-        IValidator<UpdatePublishingHouseCommand> validator)
+        IMapper mapper)
     {
         _context = context;
         _mediator = mediator;
         _mapper = mapper;
-        _validator = validator;
     }
 
     public async Task<bool> Handle(UpdatePublishingHouseCommand command, CancellationToken ct)
     {
-        var valide = await _validator.ValidateAsync(command, ct);
-        if (!valide.IsValid)
+        if(command is null)
             return false;
+        
         var publishingHouse = await _context.PublishingHouses
             .FirstOrDefaultAsync(x => x.Id == command.Id);
         _mapper.Map(command, publishingHouse);
         await _context.SaveChangeAsync(ct);
         await _mediator.Publish(new UpdatedPublishingHouseEvent(publishingHouse), ct);
+        
         return true;
     }
 }

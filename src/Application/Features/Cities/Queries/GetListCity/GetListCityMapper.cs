@@ -8,6 +8,6 @@ public class GetListCityMapper: Profile
 {
     public GetListCityMapper()
     {
-        CreateMap<City, CityVm>();
+        CreateMap<City, CityViewModel>();
     }
 }

@@ -1,7 +1,7 @@
 using Application.Features.Authors.Commands.CreateAuthor;
 using Application.Features.Authors.Commands.DeleteAuthor;
 using Application.Features.Authors.Commands.UpdateAuthor;
-using Application.Features.Authors.Queries.GetAuthorDetails;
+using Application.Features.Authors.Queries.GetDetailAuthor;
 using Application.Features.Authors.Queries.GetListAuthor;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -19,33 +19,33 @@ public class AuthorController: ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetAuthorById(Guid id)
+    [HttpGet("getById/{Id}")]
+    public async Task<IActionResult> GetAuthorById([FromRoute] GetDetailsAuthorQuery query)
     {
-        return Ok(await _mediator.Send(new GetAuthorDetailsQuery(id)));
+        return Ok(await _mediator.Send(query));
     }
 
-    [HttpGet]
+    [HttpGet("getList")]
     public async Task<IActionResult> GetListAuthor()
     {
         return Ok(await _mediator.Send(new GetListAuthorQuery()));
     }
 
-    [HttpPost]
+    [HttpPost("create")]
     public async Task<IActionResult> CreateAuthor(CreateAuthorCommand command)
     {
         return Ok(await _mediator.Send(command));
     }
 
-    [HttpPut]
+    [HttpPut("update")]
     public async Task<IActionResult> UpdateAuthor(UpdateAuthorCommand command)
     {
         return Ok(await _mediator.Send(command));
     }
 
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAuthor(Guid id)
+    [HttpDelete("delete/{Id}")]
+    public async Task<IActionResult> DeleteAuthor([FromRoute] DeleteAuthorCommand command)
     {
-        return Ok(await _mediator.Send(new DeleteAuthorCommand(id)));
+        return Ok(await _mediator.Send(command));
     }
 }

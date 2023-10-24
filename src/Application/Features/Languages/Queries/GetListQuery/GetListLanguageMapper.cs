@@ -7,6 +7,6 @@ public class GetListLanguageMapper: Profile
 {
     public GetListLanguageMapper()
     {
-        CreateMap<Language, LanguageVm>();
+        CreateMap<Language, LanguageViewModel>();
     }
 }

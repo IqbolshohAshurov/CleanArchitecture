@@ -15,7 +15,7 @@ public class UpdatedBookEventHandler: INotificationHandler<UpdatedBookEvent>
 
     public Task Handle(UpdatedBookEvent command, CancellationToken ct)
     {
-        _logger.LogInformation($"Updated was concrete row with id = {command.Book.Id}");
+        _logger.LogInformation($"Updated was concrete row from the {nameof(command)} with id = {command.Book.Id}");
         return Task.CompletedTask;
     }
 }

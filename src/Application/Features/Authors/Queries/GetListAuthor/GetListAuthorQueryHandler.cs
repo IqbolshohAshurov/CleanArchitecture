@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Authors.Queries.GetListAuthor;
 
-public class GetListAuthorQueryHandler: IRequestHandler<GetListAuthorQuery, IEnumerable<AuthorDetailsVm>>
+public class GetListAuthorQueryHandler: IRequestHandler<GetListAuthorQuery, IEnumerable<AuthorDetailsViewModel>>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -16,11 +16,11 @@ public class GetListAuthorQueryHandler: IRequestHandler<GetListAuthorQuery, IEnu
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<AuthorDetailsVm>> Handle(GetListAuthorQuery query, CancellationToken ct)
+    public async Task<IEnumerable<AuthorDetailsViewModel>> Handle(GetListAuthorQuery query, CancellationToken ct)
     {
         var authorVms = await _context.Authors
             .AsNoTracking()
-            .Select(a => _mapper.Map<AuthorDetailsVm>(a))
+            .Select(a => _mapper.Map<AuthorDetailsViewModel>(a))
             .ToListAsync(ct);
         return authorVms;
     }
