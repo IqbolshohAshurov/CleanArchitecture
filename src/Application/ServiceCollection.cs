@@ -1,5 +1,6 @@
 using System.Reflection;
 using Application.Common.Behaviors;
+using Application.Common.Interfaces.Authentication;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +16,7 @@ public static class ServiceCollection
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorPipelineBehavior<,>));
-        
+
         return services;
     }
 }

@@ -16,5 +16,6 @@ public interface IApplicationDbContext
     public DbSet<BookLanguage> BookLanguage { get; }
     public DbSet<GenrePublishingHouse> GenrePublishingHouses { get; }
 
+    public DbSet<User> Users { get; }
     Task<int> SaveChangeAsync(CancellationToken cancellationToken);
 }

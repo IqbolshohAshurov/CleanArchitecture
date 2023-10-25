@@ -23,6 +23,8 @@ public class ApplicationDbContext: DbContext, IApplicationDbContext
     public DbSet<BookAuthor> BookAuthors => Set<BookAuthor>();
     public DbSet<BookLanguage> BookLanguage => Set<BookLanguage>();
     public DbSet<GenrePublishingHouse> GenrePublishingHouses => Set<GenrePublishingHouse>();
+
+    public DbSet<User> Users => Set<User>(); 
     public Task<int> SaveChangeAsync(CancellationToken cancellationToken)
     {
         return base.SaveChangesAsync();

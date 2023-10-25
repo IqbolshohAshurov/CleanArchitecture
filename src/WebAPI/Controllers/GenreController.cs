@@ -20,26 +20,20 @@ public class GenreController: ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("getById/{Id}")]
-    public async Task<IActionResult> GetGenreById([FromRoute] GetDetailsGenreQuery query)
-    {
-        return Ok(await _mediator.Send(query));
-    }
-
-    [HttpGet("getList")]
+    [HttpGet]
     public async Task<IActionResult> GetGenreList()
     {
         return Ok(await _mediator.Send(new GetListGenreQuery()));
     }
 
-    [HttpPost("create")]
-    public async Task<IActionResult> CreateGenre(CreateGenreCommand command)
+    [HttpGet("{Id}")]
+    public async Task<IActionResult> GetGenreById([FromRoute] GetDetailsGenreQuery query)
     {
-        return Ok(await _mediator.Send(command));
+        return Ok(await _mediator.Send(query));
     }
 
-    [HttpDelete("delete/{Id}")]
-    public async Task<IActionResult> DeleteGenre([FromRoute] DeleteGenreCommand command)
+    [HttpPost("create")]
+    public async Task<IActionResult> CreateGenre(CreateGenreCommand command)
     {
         return Ok(await _mediator.Send(command));
     }
@@ -49,6 +43,10 @@ public class GenreController: ControllerBase
     {
         return Ok(await _mediator.Send(command));
     }
-    
-    
+
+    [HttpDelete("{Id}")]
+    public async Task<IActionResult> DeleteGenre([FromRoute] DeleteGenreCommand command)
+    {
+        return Ok(await _mediator.Send(command));
+    }
 }
