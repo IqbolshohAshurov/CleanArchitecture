@@ -43,6 +43,13 @@ public class ErrorHandlerMiddleware
                     Status = context.Response.StatusCode,
                     Instance = context.Request.Path.ToString()
                 },
+                InvalidPasswordOrLogin invalidPasswordOrLogin => new ErrorResponse()
+                {
+                  Title  = "Input incorrect password or login",
+                  Detail = invalidPasswordOrLogin.Message,
+                  Status = context.Response.StatusCode,
+                  Instance = context.Request.Path.ToString()
+                },
                 _ => new ErrorResponse()
                 {
                     Title = "Unhandled Exception",

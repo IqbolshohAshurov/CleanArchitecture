@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddProblemDetails();
+//builder.Services.AddProblemDetails();
 
 // Customer Services
 builder.Services.AddApplicationLayer();
